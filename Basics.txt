@@ -1,0 +1,61 @@
+
+##Sintaxe Básica e Interatividade (IEx)
+Conceitos:
+Variáveis (imutáveis), tipos básicos (números, strings, listas, tuplas).
+Módulos e funções.
+Exercício inicial:
+Abra o IEx (iex) e pratique:
+
+# Tipos básicos
+x = 10
+y = "Hello, Elixir!"
+list = [1, 2, 3]
+tuple = {:ok, "Success!"}
+IO.puts("#{y} Your number is #{x}")
+
+#Criação do arquivo math.ex:
+# Funções
+defmodule Math do
+  def add(a, b), do: a + b
+  def multiply(a, b), do: a * b
+end
+#Dentro do iex:
+c("math.ex")
+Math.add(5, 10) # Resultado: 15
+#Fora do iex: 
+elixir math.ex - roda o que tiver fora de funcão
+
+## Aprenda sobre Enum e listas
+Conceitos: Trabalhar com coleções (map, filter, reduce).
+Exercício:
+
+list = [1, 2, 3, 4, 5]
+
+# Dobrar os valores da lista
+Enum.map(list, fn x -> x * 2 end)
+
+# Filtrar valores pares
+Enum.filter(list, fn x -> rem(x, 2) == 0 end)
+
+# Somar todos os valores
+Enum.reduce(list, 0, fn x, acc -> x + acc end)
+
+## Imutabilidade e Recursão
+Pratique escrever funções recursivas, como somar os elementos de uma lista:
+
+defmodule Recursion do
+  def sum([]), do: 0
+  def sum([head | tail]), do: head + sum(tail)
+end
+
+Recursion.sum([1, 2, 3, 4]) # Resultado: 10
+
+## Pattern Matching
+Entenda como extrair valores de listas, tuplas e outras estruturas:
+
+{status, result} = {:ok, 42}
+IO.puts(result) # Resultado: 42
+
+[head | tail] = [1, 2, 3]
+IO.puts(head)  # Resultado: 1
+IO.inspect(tail) # Resultado: [2, 3]
